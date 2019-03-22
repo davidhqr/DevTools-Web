@@ -13,6 +13,9 @@ const styles = {
     maxWidth: 240,
     marginBottom: 16,
   },
+  cardTitle: {
+    fontWeight: 500,
+  },
   media: {
     objectFit: 'cover',
   },
@@ -20,11 +23,12 @@ const styles = {
 
 function ImgMediaCard(props) {
   const {classes} = props;
+
   return (
     <Card className={classes.card}>
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h6" component="h2">
+          <Typography gutterBottom variant="subtitle1" className={classes.cardTitle}>
             Remove Spaces
           </Typography>
           <Typography component="p">

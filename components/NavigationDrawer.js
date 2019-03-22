@@ -17,6 +17,11 @@ import {IconButton, Typography} from '@material-ui/core';
 import Link from 'next/link';
 
 const styles = theme => ({
+  brand: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 16,
+  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -50,7 +55,7 @@ class NavigationDrawer extends React.Component {
 
     const leftList = (
       <div className={classes.list}>
-        <Typography variant="h6" color="inherit" noWrap>
+        <Typography variant="h6" color="primary" className={classes.brand}>
           DevTools
         </Typography>
         <Divider/>

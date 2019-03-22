@@ -16,7 +16,7 @@ const styles = theme => ({
   image: {
     width: 300,
     height: 'auto',
-    marginTop: 50,
+    marginTop: 100,
   },
   title: {
     marginTop: 30,
