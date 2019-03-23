@@ -7,7 +7,7 @@ import SearchAppBar from './SearchAppBar';
 import {Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Link from 'next/link';
+import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
   paper: {
@@ -104,11 +104,11 @@ class RemoveSpaces extends React.Component {
               <Typography variant="h5" component="h3" className={classes.similarToolsTitle}>
                 Similar Tools
               </Typography>
-              <Link href="/remove-spaces">
-                <Typography component="p">
+              <Typography component="p">
+                <Link href="/">
                   Remove Dashes
-                </Typography>
-              </Link>
+                </Link>
+              </Typography>
             </Paper>
           </Grid>
         </Grid>
