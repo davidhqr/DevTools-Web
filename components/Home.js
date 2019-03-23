@@ -9,10 +9,6 @@ import ImageCard from './ImageCard';
 import Laptop from '../static/laptop.png';
 
 const styles = theme => ({
-  root: {
-    textAlign: 'center',
-    paddingTop: theme.spacing.unit * 20,
-  },
   image: {
     width: 300,
     height: 'auto',
@@ -32,8 +28,8 @@ const styles = theme => ({
     marginTop: 30,
   },
   cards: {
-    margin: 30,
     marginTop: 50,
+    width: '100%',
   },
 });
 
@@ -42,7 +38,7 @@ class Home extends React.Component {
     const {classes} = this.props;
 
     return (
-      <div>
+      <div className={classes.root}>
         <SearchAppBar/>
         <Grid
           container

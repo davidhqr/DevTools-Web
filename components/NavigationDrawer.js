@@ -71,7 +71,7 @@ class NavigationDrawer extends React.Component {
           <Collapse in={this.state.stringOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {['Remove Spaces', 'Trash', 'Spam'].map((text) => (
-                <Link href="/about">
+                <Link href="/remove-spaces">
                   <ListItem button className={classes.nested}
                             key={text} >
                     <ListItemIcon>
