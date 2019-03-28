@@ -71,34 +71,37 @@ const styles = theme => ({
   },
 });
 
-function SearchAppBar(props) {
-  const {classes} = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="fixed" color="primary">
-        <Toolbar>
-          <NavigationDrawer/>
-          <Typography className={classes.title} variant="h6" color="inherit"
-                      noWrap>
-            DevTools
-          </Typography>
-          <div className={classes.grow}/>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon/>
+class SearchAppBar extends React.Component {
+  render() {
+    const {classes} = this.props;
+
+    return (
+      <div className={classes.root}>
+        <AppBar position="fixed" color="primary">
+          <Toolbar>
+            <NavigationDrawer/>
+            <Typography className={classes.title} variant="h6" color="inherit"
+                        noWrap>
+              DevTools
+            </Typography>
+            <div className={classes.grow}/>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon/>
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  };
 }
 
 SearchAppBar.propTypes = {
