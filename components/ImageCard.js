@@ -21,28 +21,31 @@ const styles = {
   },
 };
 
-function ImgMediaCard(props) {
-  const {classes} = props;
+class ImgMediaCard extends React.Component {
+  render() {
+    const {classes} = this.props;
 
-  return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="subtitle1" className={classes.cardTitle}>
-            Remove Spaces
-          </Typography>
-          <Typography component="p">
-            Remove all spaces in a string of text
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Use this tool
-        </Button>
-      </CardActions>
-    </Card>
-  );
+    return (
+      <Card className={classes.card}>
+        <CardActionArea href={this.props.tool.path}>
+          <CardContent>
+            <Typography gutterBottom variant="subtitle1"
+                        className={classes.cardTitle}>
+              {this.props.tool.name}
+            </Typography>
+            <Typography component="p">
+              {this.props.tool.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary" href={this.props.tool.path}>
+            Use this tool
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  }
 }
 
 ImgMediaCard.propTypes = {
