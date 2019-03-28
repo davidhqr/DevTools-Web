@@ -9,7 +9,7 @@ import ImageCard from './ImageCard';
 import Laptop from '../static/laptop.png';
 import Tool from '../models/tool';
 
-const styles = theme => ({
+const styles = {
   image: {
     width: 300,
     height: 'auto',
@@ -32,17 +32,12 @@ const styles = theme => ({
     marginTop: 50,
     width: '100%',
   },
-});
+};
 
 class Home extends React.Component {
-  featuredTools = [
-    new Tool('Remove Spaces', 'Remove all spaces in a string of text', '/remove-spaces', null),
-    new Tool('Remove Dashes', 'Remove all dashes in a string of text', '/remove-dashes', null),
-  ];
-
   generateCards = () => {
     let cards = [];
-    this.featuredTools.map(tool => {
+    Tool.featuredTools.map(tool => {
       cards.push(
         <Grid item xs={6} sm={4} md={3} lg={2}>
           <ImageCard tool={tool}/>
