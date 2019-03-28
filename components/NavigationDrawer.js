@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
+import {
+  Collapse,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import TextFieldsIcon from '@material-ui/icons/TextFields'
+import TextFieldsIcon from '@material-ui/icons/TextFields';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import {IconButton, Typography} from '@material-ui/core';
-import Link from 'next/link';
+import Tool from '../models/Tool';
+import NavigationLink from './NavigationLink';
 
 const styles = theme => ({
   brand: {
@@ -40,14 +43,22 @@ class NavigationDrawer extends React.Component {
     stringOpen: false,
   };
 
-  handleStringClick = () => {
-    this.setState(state => ({stringOpen: !state.stringOpen}));
-  };
-
   toggleDrawer = (open) => () => {
     this.setState({
       open: open,
     });
+  };
+
+  handleStringClick = () => {
+    this.setState(state => ({stringOpen: !state.stringOpen}));
+  };
+
+  generateStringTools = () => {
+    let navigationLinks = [];
+    Object.values(Tool.allTools).map(tool => {
+      navigationLinks.push(<NavigationLink tool={tool} key={tool.name}/>);
+    });
+    return navigationLinks;
   };
 
   render() {
@@ -70,17 +81,7 @@ class NavigationDrawer extends React.Component {
 
           <Collapse in={this.state.stringOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {['Remove Spaces', 'Trash', 'Spam'].map((text) => (
-                <Link href="/remove-spaces">
-                  <ListItem button className={classes.nested}
-                            key={text} >
-                    <ListItemIcon>
-                      <ArrowRightIcon/>
-                    </ListItemIcon>
-                    <ListItemText inset primary={text}/>
-                  </ListItem>
-                </Link>
-              ))}
+              {this.generateStringTools()}
             </List>
           </Collapse>
         </List>

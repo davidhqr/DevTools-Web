@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
+import {
+  Button,
+  Grid,
+  Link,
+  Paper,
+  TextField,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
 import SearchAppBar from './SearchAppBar';
-import {Paper} from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
   paper: {
@@ -59,7 +61,8 @@ class RemoveSpaces extends React.Component {
           <Grid item xs={1}/>
           <Grid item xs={7}>
             <Paper elevation={1} className={classes.paper}>
-              <Typography variant="h5" component="h3" className={classes.removeSpacesTitle}>
+              <Typography variant="h5" component="h3"
+                          className={classes.removeSpacesTitle}>
                 Remove Spaces
               </Typography>
               <TextField
@@ -101,7 +104,8 @@ class RemoveSpaces extends React.Component {
           </Grid>
           <Grid item xs={3}>
             <Paper elevation={1} className={classes.paper}>
-              <Typography variant="h5" component="h3" className={classes.similarToolsTitle}>
+              <Typography variant="h5" component="h3"
+                          className={classes.similarToolsTitle}>
                 Similar Tools
               </Typography>
               <Typography component="p">

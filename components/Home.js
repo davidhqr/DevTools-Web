@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
+import {Button, Grid, Typography, withStyles} from '@material-ui/core';
 import SearchAppBar from './SearchAppBar';
 import ImageCard from './ImageCard';
 import Laptop from '../static/laptop.png';
-import Tool from '../models/tool';
+import Tool from '../models/Tool';
 
 const styles = {
   image: {
@@ -39,8 +36,8 @@ class Home extends React.Component {
     let cards = [];
     Tool.featuredTools.map(tool => {
       cards.push(
-        <Grid item xs={6} sm={4} md={3} lg={2}>
-          <ImageCard tool={tool}/>
+        <Grid item xs={6} sm={4} md={3} lg={2} key={tool.name}>
+          <ImageCard tool={tool} key={tool.name}/>
         </Grid>,
       );
     });

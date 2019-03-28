@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
+import {
+  AppBar,
+  InputBase,
+  Toolbar,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
 import {fade} from '@material-ui/core/styles/colorManipulator';
-import {withStyles} from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import NavigationDrawer from './NavigationDrawer';
 
