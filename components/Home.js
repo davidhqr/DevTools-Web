@@ -36,8 +36,8 @@ class Home extends React.Component {
     let cards = [];
     Tool.featuredTools.map(tool => {
       cards.push(
-        <Grid item xs={6} sm={4} md={3} lg={2} key={tool.name}>
-          <ImageCard tool={tool} key={tool.name}/>
+        <Grid item xs={6} sm={4} md={3} lg={2} key={tool.keyName()}>
+          <ImageCard tool={tool} key={tool.keyName()}/>
         </Grid>,
       );
     });

@@ -7,10 +7,11 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
-import SearchAppBar from './SearchAppBar'
+import SearchAppBar from './SearchAppBar';
 import ToolTemplate from './ToolTemplate';
+import Tool from '../models/Tool';
 
-const styles = theme => ({
+const styles = {
   removeSpacesTitle: {
     marginBottom: 10,
   },
@@ -18,7 +19,7 @@ const styles = theme => ({
     margin: 30,
     justifyContent: 'center',
   },
-});
+};
 
 class RemoveSpaces extends React.Component {
   state = {
@@ -44,7 +45,7 @@ class RemoveSpaces extends React.Component {
     return (
       <div>
         <SearchAppBar/>
-        <ToolTemplate>
+        <ToolTemplate tool={Tool.allTools.removeSpaces}>
           <div>
             <Typography variant="h5" component="h3"
                         className={classes.removeSpacesTitle}>
@@ -64,7 +65,8 @@ class RemoveSpaces extends React.Component {
             <Grid container justify="center">
               <Grid item>
                 <Button variant="contained" color="primary"
-                        className={classes.convertButton} onClick={this.handleClick}>
+                        className={classes.convertButton}
+                        onClick={this.handleClick}>
                   Remove Spaces
                 </Button>
               </Grid>

@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Grid,
-  Link,
-  Paper,
-  Typography,
-  withStyles,
-} from '@material-ui/core';
+import {Grid, Link, Paper, Typography, withStyles} from '@material-ui/core';
+import Tool from '../models/Tool';
 
 const styles = theme => ({
   paper: {
@@ -21,6 +16,18 @@ const styles = theme => ({
 });
 
 class ToolTemplate extends React.Component {
+  generateRecommendations = () => {
+    let recommendations = [];
+    Tool.recommendedTools[this.props.tool.keyName()].map(tool => {
+      recommendations.push(
+        <Link href={tool.path} key={tool.keyName()}>
+          {tool.name}
+        </Link>,
+      );
+    });
+    return recommendations;
+  };
+
   render() {
     const {classes} = this.props;
 
@@ -43,9 +50,7 @@ class ToolTemplate extends React.Component {
                 Similar Tools
               </Typography>
               <Typography component="p">
-                <Link href="/">
-                  Remove Dashes
-                </Link>
+                {this.generateRecommendations()}
               </Typography>
             </Paper>
           </Grid>
@@ -57,6 +62,7 @@ class ToolTemplate extends React.Component {
 
 ToolTemplate.propTypes = {
   classes: PropTypes.object.isRequired,
+  tool: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(ToolTemplate);

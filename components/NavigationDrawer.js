@@ -56,7 +56,7 @@ class NavigationDrawer extends React.Component {
   generateStringTools = () => {
     let navigationLinks = [];
     Object.values(Tool.allTools).map(tool => {
-      navigationLinks.push(<NavigationLink tool={tool} key={tool.name}/>);
+      navigationLinks.push(<NavigationLink tool={tool} key={tool.keyName()}/>);
     });
     return navigationLinks;
   };
