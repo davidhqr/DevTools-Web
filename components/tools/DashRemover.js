@@ -21,7 +21,7 @@ const styles = {
   },
 };
 
-class RemoveDashes extends React.Component {
+class DashRemover extends React.Component {
   state = {
     input: 'Hello World',
     output: '',
@@ -45,7 +45,7 @@ class RemoveDashes extends React.Component {
     return (
       <div>
         <SearchAppBar/>
-        <ToolTemplate tool={Tool.allTools.removeDashes}>
+        <ToolTemplate tool={Tool.allTools.dashRemover}>
           <div>
             <Typography variant="h5" component="h3"
                         className={classes.title}>
@@ -94,8 +94,8 @@ class RemoveDashes extends React.Component {
   }
 }
 
-RemoveDashes.propTypes = {
+DashRemover.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(RemoveDashes);
+export default withStyles(styles)(DashRemover);

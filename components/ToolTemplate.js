@@ -31,9 +31,11 @@ class ToolTemplate extends React.Component {
     let recommendations = [];
     Tool.recommendedTools[this.props.tool.keyName()].map(tool => {
       recommendations.push(
-        <Link href={tool.path} key={tool.keyName()}>
-          {tool.name}
-        </Link>,
+        <Typography component="p">
+          <Link href={tool.path} key={tool.keyName()}>
+            {tool.name}
+          </Link>
+        </Typography>,
       );
     });
     return recommendations;
@@ -59,9 +61,7 @@ class ToolTemplate extends React.Component {
                           className={classes.similarToolsTitle}>
                 Similar Tools
               </Typography>
-              <Typography component="p">
-                {this.generateRecommendations()}
-              </Typography>
+              {this.generateRecommendations()}
             </Paper>
           </Grid>
         </Grid>
