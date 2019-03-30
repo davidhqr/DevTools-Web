@@ -66,12 +66,14 @@ class ToolTemplate extends React.Component {
           </Grid>
         </Grid>
         <footer className={classes.footer}>
-          <Typography variant="h5" align="center" color="secondary" gutterBottom>
+          <Typography variant="h5" align="center" color="secondary"
+                      gutterBottom>
             DevTools
           </Typography>
           <Grid container spacing={16} className={classes.footerGrid}>
             <Grid item xs={3}>
-              <Typography variant="subtitle1" color="secondary" className={classes.footerSubtitle}>
+              <Typography variant="subtitle1" color="secondary"
+                          className={classes.footerSubtitle}>
                 Tool Type 1
               </Typography>
               <Typography component="p" color="secondary">
@@ -79,17 +81,20 @@ class ToolTemplate extends React.Component {
               </Typography>
             </Grid>
             <Grid item xs={3}>
-              <Typography variant="subtitle1" color="secondary" className={classes.footerSubtitle}>
+              <Typography variant="subtitle1" color="secondary"
+                          className={classes.footerSubtitle}>
                 Tool Type 2
               </Typography>
             </Grid>
             <Grid item xs={3}>
-              <Typography variant="subtitle1" color="secondary" className={classes.footerSubtitle}>
+              <Typography variant="subtitle1" color="secondary"
+                          className={classes.footerSubtitle}>
                 Tool Type 3
               </Typography>
             </Grid>
             <Grid item xs={3}>
-              <Typography variant="subtitle1" color="secondary" className={classes.footerSubtitle}>
+              <Typography variant="subtitle1" color="secondary"
+                          className={classes.footerSubtitle}>
                 Tool Type 4
               </Typography>
             </Grid>
