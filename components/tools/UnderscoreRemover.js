@@ -27,7 +27,7 @@ const styles = {
 
 class UnderscoreRemover extends React.Component {
   state = {
-    input: 'Hello World',
+    input: 'Hello_World',
     output: '',
   };
 
