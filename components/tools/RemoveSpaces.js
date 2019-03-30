@@ -7,12 +7,12 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
-import SearchAppBar from './SearchAppBar';
-import ToolTemplate from './ToolTemplate';
-import Tool from '../models/Tool';
+import SearchAppBar from '../SearchAppBar';
+import ToolTemplate from '../ToolTemplate';
+import Tool from '../../models/Tool';
 
 const styles = {
-  removeSpacesTitle: {
+  title: {
     marginBottom: 10,
   },
   convertButton: {
@@ -24,7 +24,7 @@ const styles = {
 class RemoveSpaces extends React.Component {
   state = {
     input: 'Hello World',
-    spacesRemoved: '',
+    output: '',
   };
 
   handleChange = () => event => {
@@ -35,7 +35,7 @@ class RemoveSpaces extends React.Component {
 
   handleClick = () => {
     this.setState({
-      spacesRemoved: this.state.input.replace(/ /g, ''),
+      output: this.state.input.replace(/ /g, ''),
     });
   };
 
@@ -48,7 +48,7 @@ class RemoveSpaces extends React.Component {
         <ToolTemplate tool={Tool.allTools.removeSpaces}>
           <div>
             <Typography variant="h5" component="h3"
-                        className={classes.removeSpacesTitle}>
+                        className={classes.title}>
               Remove Spaces
             </Typography>
             <TextField
@@ -83,7 +83,7 @@ class RemoveSpaces extends React.Component {
               InputLabelProps={{
                 shrink: true,
               }}
-              value={this.state.spacesRemoved}
+              value={this.state.output}
               margin="normal"
               variant="outlined"
             />

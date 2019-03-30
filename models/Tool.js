@@ -25,5 +25,6 @@ export default class Tool {
 
   static recommendedTools = {
     removeSpaces: [Tool.allTools.removeDashes],
+    removeDashes: [Tool.allTools.removeSpaces],
   };
 }

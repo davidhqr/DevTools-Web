@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RemoveSpaces from "../../components/RemoveSpaces";
+import RemoveSpaces from "../../components/tools/RemoveSpaces";
 
 class RemoveSpacesIndex extends Component {
   render () {

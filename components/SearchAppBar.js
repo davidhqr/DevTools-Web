@@ -6,6 +6,7 @@ import {
   Toolbar,
   Typography,
   withStyles,
+  Link,
 } from '@material-ui/core';
 import {fade} from '@material-ui/core/styles/colorManipulator';
 import SearchIcon from '@material-ui/icons/Search';
@@ -27,6 +28,7 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    color: '#ffffff',
   },
   search: {
     position: 'relative',
@@ -80,10 +82,11 @@ class SearchAppBar extends React.Component {
         <AppBar position="fixed" color="primary">
           <Toolbar>
             <NavigationDrawer/>
-            <Typography className={classes.title} variant="h6" color="inherit"
-                        noWrap>
-              DevTools
-            </Typography>
+              <Typography className={classes.title} variant="h6" noWrap>
+                <Link href="/" color="inherit">
+                  <a>DevTools</a>
+                </Link>
+              </Typography>
             <div className={classes.grow}/>
             <div className={classes.search}>
               <div className={classes.searchIcon}>

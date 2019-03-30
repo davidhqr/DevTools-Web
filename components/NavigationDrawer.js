@@ -5,7 +5,7 @@ import {
   Collapse,
   Divider,
   Drawer,
-  IconButton,
+  IconButton, Link,
   List,
   ListItem,
   ListItemIcon,
@@ -67,7 +67,9 @@ class NavigationDrawer extends React.Component {
     const leftList = (
       <div className={classes.list}>
         <Typography variant="h6" color="primary" className={classes.brand}>
-          DevTools
+          <Link href="/">
+            <a>DevTools</a>
+          </Link>
         </Typography>
         <Divider/>
         <List>
