@@ -25,7 +25,7 @@ const styles = {
   },
 };
 
-class RemoveSpaces extends React.Component {
+class CamelCaseGenerator extends React.Component {
   state = {
     input: 'Hello World',
     output: '',
@@ -37,23 +37,30 @@ class RemoveSpaces extends React.Component {
     });
   };
 
+  toCamelCase = str => {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+      return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
+    }).replace(/\s+/g, '');
+  };
+
   handleClick = () => {
     this.setState({
-      output: this.state.input.replace(/ /g, ''),
+      output: this.toCamelCase(this.state.input),
     });
   };
 
   render() {
     const {classes} = this.props;
+    const tool = Tool.allTools.camelCaseGenerator;
 
     return (
       <div>
         <SearchAppBar/>
-        <ToolTemplate tool={Tool.allTools.removeSpaces}>
+        <ToolTemplate tool={tool}>
           <div>
             <Typography variant="h5" component="h3"
                         className={classes.title}>
-              Remove Spaces
+              {tool.name}
             </Typography>
             <TextField
               id="outlined-multiline-flexible"
@@ -71,7 +78,7 @@ class RemoveSpaces extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Remove Spaces
+                  Generate Camel Case
                 </Button>
               </Grid>
             </Grid>
@@ -109,12 +116,12 @@ class RemoveSpaces extends React.Component {
   }
 }
 
-RemoveSpaces.propTypes = {
+CamelCaseGenerator.propTypes = {
   classes: PropTypes.object.isRequired,
   enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-const App = withStyles(styles)(withSnackbar(RemoveSpaces));
+const App = withStyles(styles)(withSnackbar(CamelCaseGenerator));
 
 function IntegrationNotistack() {
   return (

@@ -45,15 +45,16 @@ class UnderscoreRemover extends React.Component {
 
   render() {
     const {classes} = this.props;
+    const tool = Tool.allTools.underscoreRemover;
 
     return (
       <div>
         <SearchAppBar/>
-        <ToolTemplate tool={Tool.allTools.underscoreRemover}>
+        <ToolTemplate tool={tool}>
           <div>
             <Typography variant="h5" component="h3"
                         className={classes.title}>
-              Underscore Remover
+              {tool.name}
             </Typography>
             <TextField
               id="outlined-multiline-flexible"

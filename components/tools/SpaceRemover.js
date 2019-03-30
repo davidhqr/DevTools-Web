@@ -45,15 +45,16 @@ class SpaceRemover extends React.Component {
 
   render() {
     const {classes} = this.props;
+    const tool = Tool.allTools.spaceRemover;
 
     return (
       <div>
         <SearchAppBar/>
-        <ToolTemplate tool={Tool.allTools.spaceRemover}>
+        <ToolTemplate tool={tool}>
           <div>
             <Typography variant="h5" component="h3"
                         className={classes.title}>
-              Remove Spaces
+              {tool.name}
             </Typography>
             <TextField
               id="outlined-multiline-flexible"

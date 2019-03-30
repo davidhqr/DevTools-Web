@@ -41,15 +41,16 @@ class DashRemover extends React.Component {
 
   render() {
     const {classes} = this.props;
+    const tool = Tool.allTools.dashRemover;
 
     return (
       <div>
         <SearchAppBar/>
-        <ToolTemplate tool={Tool.allTools.dashRemover}>
+        <ToolTemplate tool={tool}>
           <div>
             <Typography variant="h5" component="h3"
                         className={classes.title}>
-              Remove Dashes
+              {tool.name}
             </Typography>
             <TextField
               id="outlined-multiline-flexible"
