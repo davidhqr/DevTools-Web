@@ -16,7 +16,7 @@ const styles = {
     marginBottom: 10,
   },
   convertButton: {
-    margin: 30,
+    margin: 20,
     justifyContent: 'center',
   },
 };

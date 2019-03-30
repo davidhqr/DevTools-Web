@@ -7,6 +7,8 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
+import {SnackbarProvider, withSnackbar} from 'notistack';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import SearchAppBar from '../SearchAppBar';
 import ToolTemplate from '../ToolTemplate';
 import Tool from '../../models/Tool';
@@ -16,8 +18,10 @@ const styles = {
     marginBottom: 10,
   },
   convertButton: {
-    margin: 30,
-    justifyContent: 'center',
+    margin: 20,
+  },
+  copyButton: {
+    margin: 10,
   },
 };
 
@@ -87,6 +91,17 @@ class RemoveSpaces extends React.Component {
               margin="normal"
               variant="outlined"
             />
+            <Grid container justify="center">
+              <Grid item>
+                <CopyToClipboard text={this.state.output}
+                                 onCopy={() => this.props.enqueueSnackbar('Copied to clipboard', {autoHideDuration: 1500})}>
+                  <Button variant="contained"
+                          className={classes.copyButton}>
+                    Copy To Clipboard
+                  </Button>
+                </CopyToClipboard>
+              </Grid>
+            </Grid>
           </div>
         </ToolTemplate>
       </div>
@@ -96,6 +111,17 @@ class RemoveSpaces extends React.Component {
 
 RemoveSpaces.propTypes = {
   classes: PropTypes.object.isRequired,
+  enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(RemoveSpaces);
+const App = withStyles(styles)(withSnackbar(RemoveSpaces));
+
+function IntegrationNotistack() {
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <App />
+    </SnackbarProvider>
+  );
+}
+
+export default IntegrationNotistack;
