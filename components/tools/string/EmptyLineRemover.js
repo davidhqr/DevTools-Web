@@ -25,9 +25,9 @@ const styles = {
   },
 };
 
-class LineBreakRemover extends React.Component {
+class EmptyLineRemover extends React.Component {
   state = {
-    input: 'Hello\nWorld',
+    input: 'Hello\n\nWorld',
     output: '',
   };
 
@@ -39,13 +39,13 @@ class LineBreakRemover extends React.Component {
 
   handleClick = () => {
     this.setState({
-      output: this.state.input.replace(/\n/g, ' '),
+      output: this.state.input.replace(/^\s*\n/gm, ''),
     });
   };
 
   render() {
     const {classes} = this.props;
-    const tool = Tool.allTools.lineBreakRemover;
+    const tool = Tool.allTools.emptyLineRemover;
 
     return (
       <div>
@@ -72,7 +72,7 @@ class LineBreakRemover extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Remove Line Breaks
+                  Remove Empty Lines
                 </Button>
               </Grid>
             </Grid>
@@ -110,12 +110,12 @@ class LineBreakRemover extends React.Component {
   }
 }
 
-LineBreakRemover.propTypes = {
+EmptyLineRemover.propTypes = {
   classes: PropTypes.object.isRequired,
   enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-const App = withStyles(styles)(withSnackbar(LineBreakRemover));
+const App = withStyles(styles)(withSnackbar(EmptyLineRemover));
 
 function IntegrationNotistack() {
   return (
