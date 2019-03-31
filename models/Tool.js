@@ -18,6 +18,7 @@ export default class Tool {
     underscoreRemover: new Tool('Underscore Remover', 'Remove all underscores in a string of text', '/string/underscore-remover', null),
     camelCaseGenerator: new Tool('Camel Case Generator', 'Generate camelCase from a string of text', '/string/camel-case-generator', null),
     snakeCaseGenerator: new Tool('Snake Case Generator', 'Generate snake_case from a string of text', '/string/snake-case-generator', null),
+    kebabCaseGenerator: new Tool('Kebab Case Generator', 'Generate kebab-case from a string of text', '/string/kebab-case-generator', null),
     snakeCaseToCamelCaseConverter: new Tool('Snake Case to Camel Case Converter', 'Convert snake_case to camelCase', '/string/snake-case-to-camel-case-converter', null),
   };
 
@@ -33,6 +34,7 @@ export default class Tool {
     underscoreRemover: [Tool.allTools.spaceRemover, Tool.allTools.dashRemover],
     camelCaseGenerator: [],
     snakeCaseGenerator: [],
+    kebabCaseGenerator: [],
     snakeCaseToCamelCaseConverter: [],
   };
 }
