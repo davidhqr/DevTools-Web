@@ -14,6 +14,7 @@ export default class Tool {
 
   static allTools = {
     spaceRemover: new Tool('Space Remover', 'Remove all spaces in a string of text', '/string/space-remover', null),
+    extraSpaceRemover: new Tool('Extra Space Remover', 'Remove all extra spaces in a string of text', '/string/extra-space-remover', null),
     dashRemover: new Tool('Dash Remover', 'Remove all dashes in a string of text', '/string/dash-remover', null),
     underscoreRemover: new Tool('Underscore Remover', 'Remove all underscores in a string of text', '/string/underscore-remover', null),
     camelCaseGenerator: new Tool('Camel Case Generator', 'Generate camelCase from a string of text', '/string/camel-case-generator', null),
@@ -33,7 +34,8 @@ export default class Tool {
   ];
 
   static recommendedTools = {
-    spaceRemover: [Tool.allTools.dashRemover, Tool.allTools.underscoreRemover],
+    spaceRemover: [Tool.allTools.extraSpaceRemover, Tool.allTools.dashRemover, Tool.allTools.underscoreRemover],
+    extraSpaceRemover: [Tool.allTools.spaceRemover],
     dashRemover: [Tool.allTools.spaceRemover, Tool.allTools.underscoreRemover],
     underscoreRemover: [Tool.allTools.spaceRemover, Tool.allTools.dashRemover],
     camelCaseGenerator: [],
