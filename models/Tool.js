@@ -17,13 +17,12 @@ export default class Tool {
     dashRemover: new Tool('Dash Remover', 'Remove all dashes in a string of text', '/string/dash-remover', null),
     underscoreRemover: new Tool('Underscore Remover', 'Remove all underscores in a string of text', '/string/underscore-remover', null),
     camelCaseGenerator: new Tool('Camel Case Generator', 'Generate camelCase from a string of text', '/string/camel-case-generator', null),
+    snakeCaseGenerator: new Tool('Snake Case Generator', 'Generate snake_case from a string of text', '/string/snake-case-generator', null),
     snakeCaseToCamelCaseConverter: new Tool('Snake Case to Camel Case Converter', 'Convert snake_case to camelCase', '/string/snake-case-to-camel-case-converter', null),
   };
 
   static featuredTools = [
     Tool.allTools.spaceRemover,
-    Tool.allTools.dashRemover,
-    Tool.allTools.underscoreRemover,
     Tool.allTools.camelCaseGenerator,
     Tool.allTools.snakeCaseToCamelCaseConverter,
   ];
@@ -33,6 +32,7 @@ export default class Tool {
     dashRemover: [Tool.allTools.spaceRemover, Tool.allTools.underscoreRemover],
     underscoreRemover: [Tool.allTools.spaceRemover, Tool.allTools.dashRemover],
     camelCaseGenerator: [],
+    snakeCaseGenerator: [],
     snakeCaseToCamelCaseConverter: [],
   };
 }
