@@ -27,6 +27,7 @@ export default class Tool {
     stringReverser: new Tool('String Reverser', 'Reverse the characters in a string of text', '/string/string-reverser'),
     wordReverser: new Tool('Word Reverser', 'Reverse the words in a string text', '/string/word-reverser'),
     wordSorter: new Tool('Word Sorter', 'Sort the words in a string text', '/string/word-sorter'),
+    textLineReverser: new Tool('Text Line Reverser', 'Reverse the lines in a string text', '/string/text-line-reverser'),
     textLineSorter: new Tool('Text Line Sorter', 'Sort the lines in a string text', '/string/text-line-sorter'),
   };
 
@@ -52,8 +53,9 @@ export default class Tool {
     snakeCaseToCamelCaseConverter: [Tool.allTools.camelCaseToSnakeCaseConverter],
     camelCaseToSnakeCaseConverter: [Tool.allTools.snakeCaseToCamelCaseConverter],
     stringReverser: [Tool.allTools.wordReverser],
-    wordReverser: [Tool.allTools.stringReverser],
+    wordReverser: [Tool.allTools.wordSorter, Tool.allTools.stringReverser],
     wordSorter: [Tool.allTools.wordReverser, Tool.allTools.textLineSorter],
-    textLineSorter: [],
+    textLineReverser: [Tool.allTools.textLineSorter],
+    textLineSorter: [Tool.allTools.textLineReverser],
   };
 }

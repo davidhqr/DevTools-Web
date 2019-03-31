@@ -25,9 +25,9 @@ const styles = {
   },
 };
 
-class WordSorter extends React.Component {
+class TextLineReverser extends React.Component {
   state = {
-    input: 'World Hello',
+    input: 'World\nHello',
     output: '',
   };
 
@@ -39,13 +39,13 @@ class WordSorter extends React.Component {
 
   handleClick = () => {
     this.setState({
-      output: this.state.input.split(/[ \n]/).sort().join(' '),
+      output: this.state.input.split('\n').reverse().join('\n'),
     });
   };
 
   render() {
     const {classes} = this.props;
-    const tool = Tool.allTools.wordSorter;
+    const tool = Tool.allTools.textLineReverser;
 
     return (
       <div>
@@ -72,7 +72,7 @@ class WordSorter extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Sort Words
+                  Reverse Text Lines
                 </Button>
               </Grid>
             </Grid>
@@ -110,12 +110,12 @@ class WordSorter extends React.Component {
   }
 }
 
-WordSorter.propTypes = {
+TextLineReverser.propTypes = {
   classes: PropTypes.object.isRequired,
   enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-const App = withStyles(styles)(withSnackbar(WordSorter));
+const App = withStyles(styles)(withSnackbar(TextLineReverser));
 
 function IntegrationNotistack() {
   return (
