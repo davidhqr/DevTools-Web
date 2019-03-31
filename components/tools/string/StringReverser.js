@@ -9,9 +9,9 @@ import {
 } from '@material-ui/core';
 import {SnackbarProvider, withSnackbar} from 'notistack';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import SearchAppBar from '../SearchAppBar';
-import ToolTemplate from '../ToolTemplate';
-import Tool from '../../models/Tool';
+import SearchAppBar from '../../SearchAppBar';
+import ToolTemplate from '../../ToolTemplate';
+import Tool from '../../../models/Tool';
 
 const styles = {
   title: {
@@ -25,9 +25,9 @@ const styles = {
   },
 };
 
-class CamelCaseGenerator extends React.Component {
+class StringReverser extends React.Component {
   state = {
-    input: 'Hello World',
+    input: 'dlroW olleH',
     output: '',
   };
 
@@ -37,21 +37,15 @@ class CamelCaseGenerator extends React.Component {
     });
   };
 
-  toCamelCase = str => {
-    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
-      return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
-    }).replace(/\s+/g, '');
-  };
-
   handleClick = () => {
     this.setState({
-      output: this.toCamelCase(this.state.input),
+      output: this.state.input.split('').reverse().join(''),
     });
   };
 
   render() {
     const {classes} = this.props;
-    const tool = Tool.allTools.camelCaseGenerator;
+    const tool = Tool.allTools.stringReverser;
 
     return (
       <div>
@@ -78,7 +72,7 @@ class CamelCaseGenerator extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Generate Camel Case
+                  Reverse String
                 </Button>
               </Grid>
             </Grid>
@@ -116,12 +110,12 @@ class CamelCaseGenerator extends React.Component {
   }
 }
 
-CamelCaseGenerator.propTypes = {
+StringReverser.propTypes = {
   classes: PropTypes.object.isRequired,
   enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-const App = withStyles(styles)(withSnackbar(CamelCaseGenerator));
+const App = withStyles(styles)(withSnackbar(StringReverser));
 
 function IntegrationNotistack() {
   return (

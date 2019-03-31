@@ -9,9 +9,9 @@ import {
 } from '@material-ui/core';
 import {SnackbarProvider, withSnackbar} from 'notistack';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import SearchAppBar from '../SearchAppBar';
-import ToolTemplate from '../ToolTemplate';
-import Tool from '../../models/Tool';
+import SearchAppBar from '../../SearchAppBar';
+import ToolTemplate from '../../ToolTemplate';
+import Tool from '../../../models/Tool';
 
 const styles = {
   title: {
@@ -25,9 +25,9 @@ const styles = {
   },
 };
 
-class UnderscoreRemover extends React.Component {
+class CamelCaseGenerator extends React.Component {
   state = {
-    input: 'Hello_World',
+    input: 'Hello World',
     output: '',
   };
 
@@ -37,15 +37,21 @@ class UnderscoreRemover extends React.Component {
     });
   };
 
+  toCamelCase = str => {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+      return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
+    }).replace(/\s+/g, '');
+  };
+
   handleClick = () => {
     this.setState({
-      output: this.state.input.replace(/_/g, ''),
+      output: this.toCamelCase(this.state.input),
     });
   };
 
   render() {
     const {classes} = this.props;
-    const tool = Tool.allTools.underscoreRemover;
+    const tool = Tool.allTools.camelCaseGenerator;
 
     return (
       <div>
@@ -72,7 +78,7 @@ class UnderscoreRemover extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Remove Underscores
+                  Generate Camel Case
                 </Button>
               </Grid>
             </Grid>
@@ -110,12 +116,12 @@ class UnderscoreRemover extends React.Component {
   }
 }
 
-UnderscoreRemover.propTypes = {
+CamelCaseGenerator.propTypes = {
   classes: PropTypes.object.isRequired,
   enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-const App = withStyles(styles)(withSnackbar(UnderscoreRemover));
+const App = withStyles(styles)(withSnackbar(CamelCaseGenerator));
 
 function IntegrationNotistack() {
   return (

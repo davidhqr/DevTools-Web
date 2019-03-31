@@ -9,9 +9,9 @@ import {
 } from '@material-ui/core';
 import {SnackbarProvider, withSnackbar} from 'notistack';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import SearchAppBar from '../SearchAppBar';
-import ToolTemplate from '../ToolTemplate';
-import Tool from '../../models/Tool';
+import SearchAppBar from '../../SearchAppBar';
+import ToolTemplate from '../../ToolTemplate';
+import Tool from '../../../models/Tool';
 
 const styles = {
   title: {

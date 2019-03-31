@@ -9,9 +9,9 @@ import {
 } from '@material-ui/core';
 import {SnackbarProvider, withSnackbar} from 'notistack';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import SearchAppBar from '../SearchAppBar';
-import ToolTemplate from '../ToolTemplate';
-import Tool from '../../models/Tool';
+import SearchAppBar from '../../SearchAppBar';
+import ToolTemplate from '../../ToolTemplate';
+import Tool from '../../../models/Tool';
 
 const styles = {
   title: {
@@ -25,9 +25,9 @@ const styles = {
   },
 };
 
-class WordReverser extends React.Component {
+class KebabCaseGenerator extends React.Component {
   state = {
-    input: 'World Hello',
+    input: 'Hello World',
     output: '',
   };
 
@@ -37,15 +37,19 @@ class WordReverser extends React.Component {
     });
   };
 
+  toKebabCase = str => {
+    return str.replace(' ', '-').toLowerCase();
+  };
+
   handleClick = () => {
     this.setState({
-      output: this.state.input.split(' ').reverse().join(' '),
+      output: this.toKebabCase(this.state.input),
     });
   };
 
   render() {
     const {classes} = this.props;
-    const tool = Tool.allTools.wordReverser;
+    const tool = Tool.allTools.kebabCaseGenerator;
 
     return (
       <div>
@@ -72,7 +76,7 @@ class WordReverser extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Reverse Words
+                  Generate Kebab Case
                 </Button>
               </Grid>
             </Grid>
@@ -110,12 +114,12 @@ class WordReverser extends React.Component {
   }
 }
 
-WordReverser.propTypes = {
+KebabCaseGenerator.propTypes = {
   classes: PropTypes.object.isRequired,
   enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-const App = withStyles(styles)(withSnackbar(WordReverser));
+const App = withStyles(styles)(withSnackbar(KebabCaseGenerator));
 
 function IntegrationNotistack() {
   return (

@@ -9,9 +9,9 @@ import {
 } from '@material-ui/core';
 import {SnackbarProvider, withSnackbar} from 'notistack';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import SearchAppBar from '../SearchAppBar';
-import ToolTemplate from '../ToolTemplate';
-import Tool from '../../models/Tool';
+import SearchAppBar from '../../SearchAppBar';
+import ToolTemplate from '../../ToolTemplate';
+import Tool from '../../../models/Tool';
 
 const styles = {
   title: {
@@ -25,9 +25,9 @@ const styles = {
   },
 };
 
-class SnakeCaseToCamelCaseConverter extends React.Component {
+class CamelCaseToSnakeCaseConverter extends React.Component {
   state = {
-    input: 'Hello_World',
+    input: 'helloWorld',
     output: '',
   };
 
@@ -37,25 +37,19 @@ class SnakeCaseToCamelCaseConverter extends React.Component {
     });
   };
 
-  lowerFirstChar = str => {
-    return str.charAt(0).toLowerCase() + str.slice(1);
-  };
-
-  toCamelCase = str => {
-    return this.lowerFirstChar(str.replace(/(_\w)/g, function (letter) {
-      return letter[1].toUpperCase();
-    }));
+  toSnakeCase = str => {
+    return str.split(/(?=[A-Z])/).join('_').toLowerCase();
   };
 
   handleClick = () => {
     this.setState({
-      output: this.toCamelCase(this.state.input),
+      output: this.toSnakeCase(this.state.input),
     });
   };
 
   render() {
     const {classes} = this.props;
-    const tool = Tool.allTools.snakeCaseToCamelCaseConverter;
+    const tool = Tool.allTools.camelCaseToSnakeCaseConverter;
 
     return (
       <div>
@@ -68,7 +62,7 @@ class SnakeCaseToCamelCaseConverter extends React.Component {
             </Typography>
             <TextField
               id="outlined-multiline-flexible"
-              label="Snake Case"
+              label="Camel Case"
               multiline
               rows="8"
               fullWidth
@@ -88,7 +82,7 @@ class SnakeCaseToCamelCaseConverter extends React.Component {
             </Grid>
             <TextField
               id="outlined-multiline-flexible"
-              label="Camel Case"
+              label="Snake Case"
               multiline
               rows="8"
               fullWidth
@@ -120,12 +114,12 @@ class SnakeCaseToCamelCaseConverter extends React.Component {
   }
 }
 
-SnakeCaseToCamelCaseConverter.propTypes = {
+CamelCaseToSnakeCaseConverter.propTypes = {
   classes: PropTypes.object.isRequired,
   enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-const App = withStyles(styles)(withSnackbar(SnakeCaseToCamelCaseConverter));
+const App = withStyles(styles)(withSnackbar(CamelCaseToSnakeCaseConverter));
 
 function IntegrationNotistack() {
   return (

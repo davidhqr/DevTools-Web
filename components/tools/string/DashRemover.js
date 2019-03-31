@@ -7,11 +7,9 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
-import {SnackbarProvider, withSnackbar} from 'notistack';
-import CopyToClipboard from 'react-copy-to-clipboard';
-import SearchAppBar from '../SearchAppBar';
-import ToolTemplate from '../ToolTemplate';
-import Tool from '../../models/Tool';
+import SearchAppBar from '../../SearchAppBar';
+import ToolTemplate from '../../ToolTemplate';
+import Tool from '../../../models/Tool';
 
 const styles = {
   title: {
@@ -19,15 +17,13 @@ const styles = {
   },
   convertButton: {
     margin: 20,
-  },
-  copyButton: {
-    margin: 10,
+    justifyContent: 'center',
   },
 };
 
-class SnakeCaseGenerator extends React.Component {
+class DashRemover extends React.Component {
   state = {
-    input: 'Hello World',
+    input: 'Hello-World',
     output: '',
   };
 
@@ -37,19 +33,15 @@ class SnakeCaseGenerator extends React.Component {
     });
   };
 
-  toSnakeCase = str => {
-    return str.replace(' ', '_').toLowerCase();
-  };
-
   handleClick = () => {
     this.setState({
-      output: this.toSnakeCase(this.state.input),
+      output: this.state.input.replace(/-/g, ''),
     });
   };
 
   render() {
     const {classes} = this.props;
-    const tool = Tool.allTools.snakeCaseGenerator;
+    const tool = Tool.allTools.dashRemover;
 
     return (
       <div>
@@ -76,7 +68,7 @@ class SnakeCaseGenerator extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Generate Snake Case
+                  Remove Dashes
                 </Button>
               </Grid>
             </Grid>
@@ -96,17 +88,6 @@ class SnakeCaseGenerator extends React.Component {
               margin="normal"
               variant="outlined"
             />
-            <Grid container justify="center">
-              <Grid item>
-                <CopyToClipboard text={this.state.output}
-                                 onCopy={() => this.props.enqueueSnackbar('Copied to clipboard', {autoHideDuration: 1500})}>
-                  <Button variant="contained"
-                          className={classes.copyButton}>
-                    Copy To Clipboard
-                  </Button>
-                </CopyToClipboard>
-              </Grid>
-            </Grid>
           </div>
         </ToolTemplate>
       </div>
@@ -114,19 +95,8 @@ class SnakeCaseGenerator extends React.Component {
   }
 }
 
-SnakeCaseGenerator.propTypes = {
+DashRemover.propTypes = {
   classes: PropTypes.object.isRequired,
-  enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-const App = withStyles(styles)(withSnackbar(SnakeCaseGenerator));
-
-function IntegrationNotistack() {
-  return (
-    <SnackbarProvider maxSnack={3}>
-      <App />
-    </SnackbarProvider>
-  );
-}
-
-export default IntegrationNotistack;
+export default withStyles(styles)(DashRemover);

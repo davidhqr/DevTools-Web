@@ -7,9 +7,11 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
-import SearchAppBar from '../SearchAppBar';
-import ToolTemplate from '../ToolTemplate';
-import Tool from '../../models/Tool';
+import {SnackbarProvider, withSnackbar} from 'notistack';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import SearchAppBar from '../../SearchAppBar';
+import ToolTemplate from '../../ToolTemplate';
+import Tool from '../../../models/Tool';
 
 const styles = {
   title: {
@@ -17,13 +19,15 @@ const styles = {
   },
   convertButton: {
     margin: 20,
-    justifyContent: 'center',
+  },
+  copyButton: {
+    margin: 10,
   },
 };
 
-class DashRemover extends React.Component {
+class UnderscoreRemover extends React.Component {
   state = {
-    input: 'Hello-World',
+    input: 'Hello_World',
     output: '',
   };
 
@@ -35,13 +39,13 @@ class DashRemover extends React.Component {
 
   handleClick = () => {
     this.setState({
-      output: this.state.input.replace(/-/g, ''),
+      output: this.state.input.replace(/_/g, ''),
     });
   };
 
   render() {
     const {classes} = this.props;
-    const tool = Tool.allTools.dashRemover;
+    const tool = Tool.allTools.underscoreRemover;
 
     return (
       <div>
@@ -68,7 +72,7 @@ class DashRemover extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Remove Dashes
+                  Remove Underscores
                 </Button>
               </Grid>
             </Grid>
@@ -88,6 +92,17 @@ class DashRemover extends React.Component {
               margin="normal"
               variant="outlined"
             />
+            <Grid container justify="center">
+              <Grid item>
+                <CopyToClipboard text={this.state.output}
+                                 onCopy={() => this.props.enqueueSnackbar('Copied to clipboard', {autoHideDuration: 1500})}>
+                  <Button variant="contained"
+                          className={classes.copyButton}>
+                    Copy To Clipboard
+                  </Button>
+                </CopyToClipboard>
+              </Grid>
+            </Grid>
           </div>
         </ToolTemplate>
       </div>
@@ -95,8 +110,19 @@ class DashRemover extends React.Component {
   }
 }
 
-DashRemover.propTypes = {
+UnderscoreRemover.propTypes = {
   classes: PropTypes.object.isRequired,
+  enqueueSnackbar: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(DashRemover);
+const App = withStyles(styles)(withSnackbar(UnderscoreRemover));
+
+function IntegrationNotistack() {
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <App />
+    </SnackbarProvider>
+  );
+}
+
+export default IntegrationNotistack;
