@@ -21,12 +21,14 @@ export default class Tool {
     kebabCaseGenerator: new Tool('Kebab Case Generator', 'Generate kebab-case from a string of text', '/string/kebab-case-generator', null),
     snakeCaseToCamelCaseConverter: new Tool('Snake Case to Camel Case Converter', 'Convert snake_case to camelCase', '/string/snake-case-to-camel-case-converter', null),
     camelCaseToSnakeCaseConverter: new Tool('Camel Case to Snake Case Converter', 'Convert camelCase to snake_case', '/string/camel-case-to-snake-case-converter', null),
+    stringReverser: new Tool('String Reverser', 'Reverse a string', '/string/string-reverser', null),
   };
 
   static featuredTools = [
     Tool.allTools.spaceRemover,
     Tool.allTools.camelCaseGenerator,
     Tool.allTools.snakeCaseToCamelCaseConverter,
+    Tool.allTools.stringReverser,
   ];
 
   static recommendedTools = {
@@ -38,5 +40,6 @@ export default class Tool {
     kebabCaseGenerator: [],
     snakeCaseToCamelCaseConverter: [Tool.allTools.camelCaseToSnakeCaseConverter],
     camelCaseToSnakeCaseConverter: [Tool.allTools.snakeCaseToCamelCaseConverter],
+    stringReverser: [],
   };
 }
