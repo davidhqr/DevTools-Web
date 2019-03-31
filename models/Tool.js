@@ -24,8 +24,9 @@ export default class Tool {
     kebabCaseGenerator: new Tool('Kebab Case Generator', 'Generate kebab-case from a string of text', '/string/kebab-case-generator'),
     snakeCaseToCamelCaseConverter: new Tool('Snake Case to Camel Case Converter', 'Convert snake_case to camelCase', '/string/snake-case-to-camel-case-converter'),
     camelCaseToSnakeCaseConverter: new Tool('Camel Case to Snake Case Converter', 'Convert camelCase to snake_case', '/string/camel-case-to-snake-case-converter'),
-    stringReverser: new Tool('String Reverser', 'Reverse the characters in a string', '/string/string-reverser'),
-    wordReverser: new Tool('Word Reverser', 'Reverse the words in a string', '/string/word-reverser'),
+    stringReverser: new Tool('String Reverser', 'Reverse the characters in a string of text', '/string/string-reverser'),
+    wordReverser: new Tool('Word Reverser', 'Reverse the words in a string text', '/string/word-reverser'),
+    textLineSorter: new Tool('Text Line Sorter', 'Sort the lines in a string text', '/string/text-line-sorter'),
   };
 
   static featuredTools = [
@@ -33,6 +34,7 @@ export default class Tool {
     Tool.allTools.camelCaseGenerator,
     Tool.allTools.snakeCaseToCamelCaseConverter,
     Tool.allTools.stringReverser,
+    Tool.allTools.textLineSorter,
   ];
 
   static recommendedTools = {
@@ -50,5 +52,6 @@ export default class Tool {
     camelCaseToSnakeCaseConverter: [Tool.allTools.snakeCaseToCamelCaseConverter],
     stringReverser: [Tool.allTools.wordReverser],
     wordReverser: [Tool.allTools.stringReverser],
+    textLineSorter: [],
   };
 }
