@@ -13,6 +13,7 @@
     "react": "latest",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "latest",
+    "react-dropzone": "^10.1.0",
     "react-jss": "^8.1.0"
   },
   "scripts": {

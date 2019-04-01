@@ -12,6 +12,7 @@ export default class Tool {
   }
 
   static allTools = {
+    // String Tools
     spaceRemover: new Tool('Space Remover', 'Remove all spaces in a string of text', '/string/space-remover'),
     extraSpaceRemover: new Tool('Extra Space Remover', 'Remove all extra spaces in a string of text', '/string/extra-space-remover'),
     dashRemover: new Tool('Dash Remover', 'Remove all dashes in a string of text', '/string/dash-remover'),
@@ -29,6 +30,8 @@ export default class Tool {
     wordSorter: new Tool('Word Sorter', 'Sort the words in a string text', '/string/word-sorter'),
     textLineReverser: new Tool('Text Line Reverser', 'Reverse the lines in a string text', '/string/text-line-reverser'),
     textLineSorter: new Tool('Text Line Sorter', 'Sort the lines in a string text', '/string/text-line-sorter'),
+    // Encoding Tools
+    imageToBase64Converter: new Tool('Image to Base64 Converter', 'Convert images to base64 encoded strings', '/encoding/image-to-base64-converter'),
   };
 
   static featuredTools = [
@@ -37,9 +40,11 @@ export default class Tool {
     Tool.allTools.snakeCaseToCamelCaseConverter,
     Tool.allTools.stringReverser,
     Tool.allTools.textLineSorter,
+    Tool.allTools.imageToBase64Converter,
   ];
 
   static recommendedTools = {
+    // String Tools
     spaceRemover: [Tool.allTools.extraSpaceRemover, Tool.allTools.dashRemover, Tool.allTools.underscoreRemover],
     extraSpaceRemover: [Tool.allTools.spaceRemover],
     dashRemover: [Tool.allTools.spaceRemover, Tool.allTools.underscoreRemover],
@@ -57,5 +62,7 @@ export default class Tool {
     wordSorter: [Tool.allTools.wordReverser, Tool.allTools.textLineSorter],
     textLineReverser: [Tool.allTools.textLineSorter],
     textLineSorter: [Tool.allTools.textLineReverser],
+    // Encoding Tools
+    imageToBase64Converter: [],
   };
 }
