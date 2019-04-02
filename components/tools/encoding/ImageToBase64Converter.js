@@ -30,7 +30,6 @@ const styles = {
 class ImageToBase64Converter extends React.Component {
   state = {
     output: '',
-    open: false,
     files: [],
   };
 
@@ -49,7 +48,11 @@ class ImageToBase64Converter extends React.Component {
   };
 
   handleClick = () => {
-    this.getBase64(this.state.files[0]);
+    if (this.state.files.length > 0) {
+      this.getBase64(this.state.files[0]);
+    } else {
+      this.props.enqueueSnackbar('Select an image first', {autoHideDuration: 2000})
+    }
   };
 
   onChange = files => {
