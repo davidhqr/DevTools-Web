@@ -32,6 +32,7 @@ export default class Tool {
     textLineSorter: new Tool('Text Line Sorter', 'Sort the lines in a string text', '/string/text-line-sorter'),
     // Encoding Tools
     imageToBase64Converter: new Tool('Image to Base64 Converter', 'Convert images to base64 encoded strings', '/encoding/image-to-base64-converter'),
+    base64ToImageConverter: new Tool('Base64 to Image Converter', 'Convert base64 encoded strings to images', '/encoding/base64-to-image-converter'),
   };
 
   static featuredTools = [
@@ -63,6 +64,7 @@ export default class Tool {
     textLineReverser: [Tool.allTools.textLineSorter],
     textLineSorter: [Tool.allTools.textLineReverser],
     // Encoding Tools
-    imageToBase64Converter: [],
+    imageToBase64Converter: [Tool.allTools.base64ToImageConverter],
+    base64ToImageConverter: [Tool.allTools.imageToBase64Converter],
   };
 }

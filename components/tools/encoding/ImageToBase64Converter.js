@@ -39,7 +39,7 @@ class ImageToBase64Converter extends React.Component {
     reader.readAsDataURL(file);
     reader.onload = function () {
       that.setState({
-        output: reader.result.replace(/^data:image\/[a-zA-Z]+;base64,/, ''),
+        output: reader.result,
       });
     };
     reader.onerror = function (error) {
@@ -82,7 +82,7 @@ class ImageToBase64Converter extends React.Component {
                 <Button variant="contained" color="primary"
                         className={classes.convertButton}
                         onClick={this.handleClick}>
-                  Generate Base64 String
+                  Convert To Base64 String
                 </Button>
               </Grid>
             </Grid>
