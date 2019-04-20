@@ -38,8 +38,6 @@ export default class Tool {
   static featuredTools = [
     Tool.allTools.spaceRemover,
     Tool.allTools.camelCaseGenerator,
-    Tool.allTools.snakeCaseToCamelCaseConverter,
-    Tool.allTools.stringReverser,
     Tool.allTools.textLineSorter,
     Tool.allTools.imageToBase64Converter,
   ];
