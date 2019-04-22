@@ -17,6 +17,9 @@ const styles = theme => ({
     backgroundColor: '#1D2331',
     marginTop: theme.spacing.unit * 8,
     padding: `${theme.spacing.unit * 6}px 0`,
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
   },
   footerGrid: {
     margin: 30,
@@ -65,6 +68,7 @@ class ToolTemplate extends React.Component {
             </Paper>
           </Grid>
         </Grid>
+        <div className={classes.clear}/>
         <footer className={classes.footer}>
           <Typography variant="h5" align="center" color="secondary"
                       gutterBottom>
