@@ -18,7 +18,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 8,
     padding: `${theme.spacing.unit * 6}px 0`,
     width: '100%',
-    position: 'fixed',
+    position: 'relative',
     bottom: 0,
   },
   footerGrid: {
