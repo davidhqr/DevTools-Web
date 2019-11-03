@@ -1,9 +1,10 @@
 # DevTools-Web
 
-## How to run
+This is the DevTools React web app.
 
-First, clone the repo, then install it and run:
-  ```sh
-  npm install
-  npm run dev
-  ```
+## Development
+
+To run the DevTools locally, execute the following commands:
+1. `npm install`
+2. `npm run dev`
+3. Navigate to http://localhost:3000
